@@ -14,6 +14,55 @@ function App() {
   const [gameState, setGameState] = useState('IDLE'); // IDLE, RUNNING, WON, LOST
   const [modalMessage, setModalMessage] = useState('');
 
+  // Auth & Timer State
+  const [user, setUser] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes in seconds
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [finalStats, setFinalStats] = useState(null);
+
+  // Form State
+  const [formName, setFormName] = useState('');
+  const [formMatricule, setFormMatricule] = useState('');
+  const [formError, setFormError] = useState('');
+
+  // End game handler
+  const triggerGameOver = async (completedLevel) => {
+    setIsGameOver(true);
+    setGameState('IDLE');
+
+    const timeUsed = 1800 - timeLeft;
+    setFinalStats({ maxLevel: completedLevel, timeUsed });
+
+    try {
+      await fetch('http://localhost:3001/api/save-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          matricule: user.matricule,
+          name: user.name,
+          maxLevel: completedLevel,
+          timeUsed: timeUsed
+        })
+      });
+    } catch (err) {
+      console.error('Failed to save session:', err);
+    }
+  };
+
+  // Timer logic
+  useEffect(() => {
+    if (user && !isGameOver) {
+      if (timeLeft <= 0) {
+        triggerGameOver(currentLevelIndex + 1); // Trigger game over with current level
+      } else {
+        const timerId = setInterval(() => {
+          setTimeLeft((prev) => prev - 1);
+        }, 1000);
+        return () => clearInterval(timerId);
+      }
+    }
+  }, [user, isGameOver, timeLeft]);
+
   // Reset level state when level changes
   useEffect(() => {
     setPlayerPos({ x: currentLevel.startPos.x, y: currentLevel.startPos.y });
@@ -101,8 +150,12 @@ function App() {
         // End of actions - evaluate win/loss now
         setTimeout(() => {
           if (currentX === currentLevel.goalPos.x && currentY === currentLevel.goalPos.y) {
-            setGameState('WON');
-            setModalMessage("Great job! You wrote the correct sequence.");
+            if (currentLevelIndex === levels.length - 1) {
+              triggerGameOver(20);
+            } else {
+              setGameState('WON');
+              setModalMessage("Great job! You wrote the correct sequence.");
+            }
           } else {
             setGameState('LOST');
             setModalMessage("You ran out of commands before reaching the goal.");
@@ -170,8 +223,72 @@ function App() {
     setModalMessage('');
   };
 
+  const handleRegister = (e) => {
+    e.preventDefault();
+    if (!/^[a-zA-Z0-9]{6}$/.test(formMatricule)) {
+      setFormError('Matricule must be exactly 6 alphanumeric characters.');
+      return;
+    }
+    if (formName.trim() === '') {
+      setFormError('Name is required.');
+      return;
+    }
+    setUser({ name: formName, matricule: formMatricule });
+  };
+
+  if (!user) {
+    return (
+      <div className="flex w-screen h-screen items-center justify-center bg-game-dark-blue font-sans">
+        <form onSubmit={handleRegister} className="bg-game-white p-8 rounded-xl shadow-2xl max-w-md w-full">
+          <h2 className="text-3xl font-bold mb-6 text-game-dark-blue text-center">Registration</h2>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
+            <input
+              type="text"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-game-light-blue"
+              value={formName}
+              onChange={(e) => setFormName(e.target.value)}
+              placeholder="Enter your name"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Matricule (6 chars)</label>
+            <input
+              type="text"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-game-light-blue"
+              value={formMatricule}
+              onChange={(e) => setFormMatricule(e.target.value.toUpperCase())}
+              placeholder="e.g. AB1234"
+              maxLength={6}
+            />
+            {formError && <p className="text-red-500 text-xs italic mt-2">{formError}</p>}
+          </div>
+
+          <div className="flex items-center justify-between">
+            <button className="bg-game-light-blue hover:bg-opacity-90 text-game-dark-blue font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 w-full" type="submit">
+              Start Game
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const s = (seconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  };
+
   return (
-    <div className="flex w-screen h-screen overflow-hidden font-sans">
+    <div className="flex w-screen h-screen overflow-hidden font-sans relative">
+      {/* Timer UI */}
+      <div className="absolute top-4 right-4 bg-game-dark-blue text-game-white px-4 py-2 rounded-lg shadow-lg z-20 font-mono text-xl font-bold border-2 border-game-light-blue">
+        {formatTime(timeLeft)}
+      </div>
+
       {/* Left Panel: Command Blocks */}
       <div className="w-1/3 h-full min-w-[400px]">
         <CommandBlocks
@@ -194,28 +311,43 @@ function App() {
         />
 
         {/* Modal Overlay */}
-        {(gameState === 'WON' || gameState === 'LOST') && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+        {(gameState === 'WON' || gameState === 'LOST' || isGameOver) && (
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-30">
             <div className="bg-game-white p-8 rounded-xl shadow-2xl max-w-md text-center">
-              <h2 className={`text-3xl font-bold mb-4 ${gameState === 'WON' ? 'text-green-600' : 'text-red-600'}`}>
-                {gameState === 'WON' ? 'Level Complete!' : 'Try Again'}
-              </h2>
-              <p className="text-gray-700 mb-8 text-lg">{modalMessage}</p>
-
-              {gameState === 'WON' ? (
-                <button
-                  onClick={handleNextLevel}
-                  className="bg-game-light-blue text-game-dark-blue px-6 py-2 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all"
-                >
-                  {currentLevelIndex < levels.length - 1 ? 'Next Level' : 'Finish Game'}
-                </button>
+              {isGameOver ? (
+                <>
+                  <h2 className="text-4xl font-bold mb-4 text-game-dark-blue">Session Complete!</h2>
+                  <div className="text-gray-700 mb-8 text-lg space-y-2">
+                    <p><strong>Name:</strong> {user.name}</p>
+                    <p><strong>Matricule:</strong> {user.matricule}</p>
+                    <p><strong>Max Level Reached:</strong> {finalStats?.maxLevel}</p>
+                    <p><strong>Time Used:</strong> {formatTime(finalStats?.timeUsed)}</p>
+                  </div>
+                  <p className="text-sm opacity-75 italic text-gray-600">Your results have been saved.</p>
+                </>
               ) : (
-                <button
-                  onClick={handleRetry}
-                  className="bg-gray-800 text-game-white px-6 py-2 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all"
-                >
-                  Retry
-                </button>
+                <>
+                  <h2 className={`text-3xl font-bold mb-4 ${gameState === 'WON' ? 'text-green-600' : 'text-red-600'}`}>
+                    {gameState === 'WON' ? 'Level Complete!' : 'Try Again'}
+                  </h2>
+                  <p className="text-gray-700 mb-8 text-lg">{modalMessage}</p>
+
+                  {gameState === 'WON' ? (
+                    <button
+                      onClick={handleNextLevel}
+                      className="bg-game-light-blue text-game-dark-blue px-6 py-2 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all"
+                    >
+                      Next Level
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleRetry}
+                      className="bg-gray-800 text-game-white px-6 py-2 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all"
+                    >
+                      Retry
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </div>

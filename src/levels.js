@@ -2,7 +2,7 @@ export const levels = [
   {
     "id": 1,
     "instructions": "Move forward to the goal.",
-    "maxCommands": 3,
+    "maxCommands": 4,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -263,7 +263,7 @@ export const levels = [
   {
     "id": 2,
     "instructions": "Keep moving!",
-    "maxCommands": 4,
+    "maxCommands": 5,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -520,7 +520,7 @@ export const levels = [
   {
     "id": 3,
     "instructions": "Time to turn.",
-    "maxCommands": 4,
+    "maxCommands": 7,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -773,7 +773,7 @@ export const levels = [
   {
     "id": 4,
     "instructions": "Navigate the corner.",
-    "maxCommands": 6,
+    "maxCommands": 9,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -1022,7 +1022,7 @@ export const levels = [
   {
     "id": 5,
     "instructions": "A quick zig-zag.",
-    "maxCommands": 7,
+    "maxCommands": 12,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -1267,7 +1267,7 @@ export const levels = [
   {
     "id": 6,
     "instructions": "Avoid the wall.",
-    "maxCommands": 6,
+    "maxCommands": 10,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -1512,7 +1512,7 @@ export const levels = [
   {
     "id": 7,
     "instructions": "Go around the pillar.",
-    "maxCommands": 8,
+    "maxCommands": 12,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -1757,7 +1757,7 @@ export const levels = [
   {
     "id": 8,
     "instructions": "The U-Turn.",
-    "maxCommands": 9,
+    "maxCommands": 14,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -1994,7 +1994,7 @@ export const levels = [
   {
     "id": 9,
     "instructions": "Sneak past the blocks.",
-    "maxCommands": 10,
+    "maxCommands": 16,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -2235,7 +2235,7 @@ export const levels = [
   {
     "id": 10,
     "instructions": "The long way around.",
-    "maxCommands": 12,
+    "maxCommands": 20,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -2464,7 +2464,7 @@ export const levels = [
   {
     "id": 11,
     "instructions": "Use a loop to walk the long hallway.",
-    "maxCommands": 4,
+    "maxCommands": 5,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -2709,7 +2709,7 @@ export const levels = [
   {
     "id": 12,
     "instructions": "Loop to the edge.",
-    "maxCommands": 4,
+    "maxCommands": 9,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -2954,7 +2954,7 @@ export const levels = [
   {
     "id": 13,
     "instructions": "Stairs! Use a loop to repeat the pattern.",
-    "maxCommands": 6,
+    "maxCommands": 8,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -3195,7 +3195,7 @@ export const levels = [
   {
     "id": 14,
     "instructions": "A bigger staircase.",
-    "maxCommands": 6,
+    "maxCommands": 8,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -3428,7 +3428,7 @@ export const levels = [
   {
     "id": 15,
     "instructions": "The spiral loop.",
-    "maxCommands": 6,
+    "maxCommands": 12,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -3669,7 +3669,7 @@ export const levels = [
   {
     "id": 16,
     "instructions": "Loop around the center.",
-    "maxCommands": 8,
+    "maxCommands": 14,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -3906,7 +3906,7 @@ export const levels = [
   {
     "id": 17,
     "instructions": "Double loop pattern.",
-    "maxCommands": 8,
+    "maxCommands": 14,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -4143,7 +4143,7 @@ export const levels = [
   {
     "id": 18,
     "instructions": "The Snake.",
-    "maxCommands": 10,
+    "maxCommands": 16,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -4372,7 +4372,7 @@ export const levels = [
   {
     "id": 19,
     "instructions": "Complex path. Be efficient!",
-    "maxCommands": 10,
+    "maxCommands": 16,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -4605,7 +4605,7 @@ export const levels = [
   {
     "id": 20,
     "instructions": "The Final Challenge.",
-    "maxCommands": 12,
+    "maxCommands": 20,
     "gridSize": 8,
     "startPos": {
       "x": 1,
