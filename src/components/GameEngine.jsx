@@ -23,18 +23,18 @@ const GameEngine = ({ level, playerPos, playerFacing }) => {
             <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
           )}
           {isPlayer && (
-            <div className="relative w-3/4 h-3/4 bg-game-light-blue rounded-full flex items-center justify-center shadow-md">
-              <div
-                className={`absolute w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[10px] border-b-game-dark-blue transition-transform duration-300 ease-in-out`}
-                style={{
-                  transform: `rotate(${
-                    playerFacing === 'NORTH' ? 0 :
-                    playerFacing === 'EAST' ? 90 :
-                    playerFacing === 'SOUTH' ? 180 :
-                    playerFacing === 'WEST' ? 270 : 0
-                  }deg) translateY(-8px)`
-                }}
-              ></div>
+            <div
+              className="text-4xl transition-transform duration-300 ease-in-out flex items-center justify-center"
+              style={{
+                transform: `rotate(${
+                  playerFacing === 'NORTH' ? -45 :
+                  playerFacing === 'EAST' ? 45 :
+                  playerFacing === 'SOUTH' ? 135 :
+                  playerFacing === 'WEST' ? 225 : -45
+                }deg)`
+              }}
+            >
+              🚀
             </div>
           )}
         </div>

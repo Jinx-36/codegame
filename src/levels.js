@@ -6,7 +6,8 @@ export const levels = [
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 3, y: 0 },
-    walls: []
+    walls: [],
+    maxCommands: 4
   },
   {
     id: 2,
@@ -14,7 +15,8 @@ export const levels = [
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 3, y: 3 },
-    walls: []
+    walls: [],
+    maxCommands: 8
   },
   {
     id: 3,
@@ -22,15 +24,17 @@ export const levels = [
     gridSize: 8,
     startPos: { x: 3, y: 3, facing: 'WEST' },
     goalPos: { x: 0, y: 0 },
-    walls: []
+    walls: [],
+    maxCommands: 8
   },
   {
     id: 4,
     instructions: "Navigate around the edge of the board.",
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'EAST' },
-    goalPos: { x: 0, y: 1 }, // Need to go all the way around? Or just back up? Let's make it simple.
-    walls: []
+    goalPos: { x: 0, y: 1 },
+    walls: [],
+    maxCommands: 10
   },
   {
     id: 5,
@@ -38,7 +42,8 @@ export const levels = [
     gridSize: 8,
     startPos: { x: 4, y: 4, facing: 'NORTH' },
     goalPos: { x: 6, y: 6 },
-    walls: []
+    walls: [],
+    maxCommands: 10
   },
 
   // Levels 6-10: Introducing obstacles (walls) requiring complex paths.
@@ -48,7 +53,8 @@ export const levels = [
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 4, y: 0 },
-    walls: [{ x: 2, y: 0 }]
+    walls: [{ x: 2, y: 0 }],
+    maxCommands: 8
   },
   {
     id: 7,
@@ -56,7 +62,8 @@ export const levels = [
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 4, y: 2 },
-    walls: [{ x: 2, y: 0 }, { x: 2, y: 1 }]
+    walls: [{ x: 2, y: 0 }, { x: 2, y: 1 }],
+    maxCommands: 12
   },
   {
     id: 8,
@@ -64,7 +71,8 @@ export const levels = [
     gridSize: 8,
     startPos: { x: 0, y: 3, facing: 'EAST' },
     goalPos: { x: 6, y: 3 },
-    walls: [{ x: 3, y: 2 }, { x: 3, y: 3 }, { x: 3, y: 4 }]
+    walls: [{ x: 3, y: 2 }, { x: 3, y: 3 }, { x: 3, y: 4 }],
+    maxCommands: 16
   },
   {
     id: 9,
@@ -72,7 +80,8 @@ export const levels = [
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 4, y: 4 },
-    walls: [{ x: 2, y: 0 }, { x: 2, y: 2 }, { x: 4, y: 2 }]
+    walls: [{ x: 2, y: 0 }, { x: 2, y: 2 }, { x: 4, y: 2 }],
+    maxCommands: 16
   },
   {
     id: 10,
@@ -84,49 +93,55 @@ export const levels = [
       { x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 }, { x: 3, y: 0 },
       { x: 0, y: 1 },                                 { x: 3, y: 1 },
       { x: 0, y: 2 }, { x: 1, y: 2 },                 { x: 3, y: 2 }
-    ]
+    ],
+    maxCommands: 12
   },
 
-  // Levels 11-15: Introducing the repeat() concept.
+  // Levels 11-15: Long distance paths
   {
     id: 11,
-    instructions: "Use repeat(4) { moveForward() } to reach the goal in fewer lines of code.",
+    instructions: "Navigate the L-shape.",
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 4, y: 0 },
-    walls: []
+    walls: [],
+    maxCommands: 12
   },
   {
     id: 12,
-    instructions: "Use repeat to travel a long distance, then turn.",
+    instructions: "Travel a long distance, then turn.",
     gridSize: 10,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 8, y: 8 },
-    walls: []
+    walls: [],
+    maxCommands: 20
   },
   {
     id: 13,
-    instructions: "Use repeat with multiple commands inside.",
+    instructions: "Navigate with multiple turns.",
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 4, y: 4 },
-    walls: []
+    walls: [],
+    maxCommands: 15
   },
   {
     id: 14,
-    instructions: "Use repeat to avoid a row of obstacles.",
+    instructions: "Avoid a row of obstacles.",
     gridSize: 8,
     startPos: { x: 0, y: 0, facing: 'SOUTH' },
     goalPos: { x: 6, y: 6 },
-    walls: [{ x: 1, y: 1 }, { x: 2, y: 2 }, { x: 3, y: 3 }, { x: 4, y: 4 }]
+    walls: [{ x: 1, y: 1 }, { x: 2, y: 2 }, { x: 3, y: 3 }, { x: 4, y: 4 }],
+    maxCommands: 20
   },
   {
     id: 15,
-    instructions: "A larger repetitive pattern.",
+    instructions: "A larger pattern.",
     gridSize: 10,
     startPos: { x: 0, y: 0, facing: 'EAST' },
     goalPos: { x: 9, y: 9 },
-    walls: []
+    walls: [],
+    maxCommands: 25
   },
 
   // Levels 16-20: Highly complex mazes requiring efficient code.
@@ -141,7 +156,8 @@ export const levels = [
       { x: 3, y: 9 }, { x: 3, y: 8 }, { x: 3, y: 7 }, { x: 3, y: 6 },
       { x: 5, y: 0 }, { x: 5, y: 1 }, { x: 5, y: 2 }, { x: 5, y: 3 },
       { x: 7, y: 9 }, { x: 7, y: 8 }, { x: 7, y: 7 }, { x: 7, y: 6 }
-    ]
+    ],
+    maxCommands: 35
   },
   {
     id: 17,
@@ -154,7 +170,8 @@ export const levels = [
       { x: 8, y: 2 }, { x: 8, y: 3 }, { x: 8, y: 4 }, { x: 8, y: 5 }, { x: 8, y: 6 }, { x: 8, y: 7 }, { x: 8, y: 8 },
       { x: 7, y: 8 }, { x: 6, y: 8 }, { x: 5, y: 8 }, { x: 4, y: 8 }, { x: 3, y: 8 }, { x: 2, y: 8 }, { x: 1, y: 8 },
       { x: 1, y: 7 }, { x: 1, y: 6 }, { x: 1, y: 5 }, { x: 1, y: 4 }, { x: 1, y: 3 }, { x: 1, y: 2 }
-    ]
+    ],
+    maxCommands: 45
   },
   {
     id: 18,
@@ -167,7 +184,8 @@ export const levels = [
       { x: 1, y: 3 }, { x: 3, y: 3 }, { x: 5, y: 3 }, { x: 7, y: 3 },
       { x: 1, y: 5 }, { x: 3, y: 5 }, { x: 5, y: 5 }, { x: 7, y: 5 },
       { x: 1, y: 7 }, { x: 3, y: 7 }, { x: 5, y: 7 }, { x: 7, y: 7 },
-    ]
+    ],
+    maxCommands: 30
   },
   {
     id: 19,
@@ -180,11 +198,12 @@ export const levels = [
       { x: 1, y: 6 }, { x: 2, y: 6 }, { x: 3, y: 6 }, { x: 4, y: 6 }, { x: 5, y: 6 }, { x: 6, y: 6 }, { x: 7, y: 6 }, { x: 8, y: 6 }, { x: 9, y: 6 },
       { x: 0, y: 4 }, { x: 1, y: 4 }, { x: 2, y: 4 }, { x: 3, y: 4 }, { x: 4, y: 4 }, { x: 5, y: 4 }, { x: 6, y: 4 }, { x: 7, y: 4 }, { x: 8, y: 4 },
       { x: 1, y: 2 }, { x: 2, y: 2 }, { x: 3, y: 2 }, { x: 4, y: 2 }, { x: 5, y: 2 }, { x: 6, y: 2 }, { x: 7, y: 2 }, { x: 8, y: 2 }, { x: 9, y: 2 },
-    ]
+    ],
+    maxCommands: 60
   },
   {
     id: 20,
-    instructions: "Final Challenge: Use loops efficiently to navigate the grid.",
+    instructions: "Final Challenge: Navigate the grid.",
     gridSize: 10,
     startPos: { x: 0, y: 0, facing: 'SOUTH' },
     goalPos: { x: 9, y: 9 },
@@ -193,6 +212,7 @@ export const levels = [
       { x: 4, y: 9 }, { x: 4, y: 8 }, { x: 4, y: 7 }, { x: 4, y: 6 }, { x: 4, y: 5 },
       { x: 6, y: 0 }, { x: 6, y: 1 }, { x: 6, y: 2 }, { x: 6, y: 3 }, { x: 6, y: 4 },
       { x: 8, y: 9 }, { x: 8, y: 8 }, { x: 8, y: 7 }, { x: 8, y: 6 }, { x: 8, y: 5 },
-    ]
+    ],
+    maxCommands: 45
   }
 ];

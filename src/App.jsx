@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { levels } from './levels';
-import { parseCommands } from './utils/parser';
 import GameEngine from './components/GameEngine';
-import CodeEditor from './components/CodeEditor';
+import CommandBlocks from './components/CommandBlocks';
 
 function App() {
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);
@@ -11,7 +10,7 @@ function App() {
   const [playerPos, setPlayerPos] = useState({ ...currentLevel.startPos });
   const [playerFacing, setPlayerFacing] = useState(currentLevel.startPos.facing);
 
-  const [code, setCode] = useState('');
+  const [commands, setCommands] = useState([]);
   const [gameState, setGameState] = useState('IDLE'); // IDLE, RUNNING, WON, LOST
   const [modalMessage, setModalMessage] = useState('');
 
@@ -19,7 +18,7 @@ function App() {
   useEffect(() => {
     setPlayerPos({ x: currentLevel.startPos.x, y: currentLevel.startPos.y });
     setPlayerFacing(currentLevel.startPos.facing);
-    setCode('');
+    setCommands([]);
     setGameState('IDLE');
     setModalMessage('');
   }, [currentLevelIndex, currentLevel]);
@@ -32,10 +31,9 @@ function App() {
     setPlayerFacing(currentLevel.startPos.facing);
     setGameState('RUNNING');
 
-    const actions = parseCommands(code);
-    if (actions.length === 0) {
+    if (commands.length === 0) {
       setGameState('LOST');
-      setModalMessage("You didn't write any valid commands!");
+      setModalMessage("You didn't add any commands!");
       return;
     }
 
@@ -45,12 +43,12 @@ function App() {
     let currentDir = currentLevel.startPos.facing;
 
     const executeAction = (index) => {
-      if (index >= actions.length) {
+      if (index >= commands.length) {
         // End of actions
         return;
       }
 
-      const action = actions[index];
+      const action = commands[index];
 
       if (action === 'TURN_LEFT') {
         const dirs = ['NORTH', 'WEST', 'SOUTH', 'EAST'];
@@ -98,7 +96,7 @@ function App() {
       }
 
       // If we finished all commands and haven't won/lost yet
-      if (index === actions.length - 1 && !(currentX === currentLevel.goalPos.x && currentY === currentLevel.goalPos.y)) {
+      if (index === commands.length - 1 && !(currentX === currentLevel.goalPos.x && currentY === currentLevel.goalPos.y)) {
         setTimeout(() => {
           if (gameState !== 'LOST' && gameState !== 'WON') { // Prevent double-triggering
             setGameState('LOST');
@@ -128,13 +126,14 @@ function App() {
 
   return (
     <div className="flex w-screen h-screen overflow-hidden font-sans">
-      {/* Left Panel: Code Editor */}
+      {/* Left Panel: Command Blocks */}
       <div className="w-1/3 h-full min-w-[400px]">
-        <CodeEditor
+        <CommandBlocks
           levelInstructions={currentLevel.instructions}
           levelNumber={currentLevel.id}
-          code={code}
-          setCode={setCode}
+          maxCommands={currentLevel.maxCommands}
+          commands={commands}
+          setCommands={setCommands}
           onRunCode={handleRunCode}
           gameState={gameState}
         />
