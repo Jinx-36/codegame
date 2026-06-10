@@ -37,18 +37,81 @@ function App() {
       return;
     }
 
+    // Unroll loops into a flat array of simple actions
+    const unrollCommands = (cmds) => {
+      const flat = [];
+      let i = 0;
+      while (i < cmds.length) {
+        const cmd = cmds[i];
+        if (cmd.type === 'START_LOOP') {
+          // Find matching END_LOOP
+          let endIdx = -1;
+          let depth = 0;
+          for (let j = i + 1; j < cmds.length; j++) {
+            if (cmds[j].type === 'START_LOOP') depth++;
+            if (cmds[j].type === 'END_LOOP') {
+              if (depth === 0) {
+                endIdx = j;
+                break;
+              } else {
+                depth--;
+              }
+            }
+          }
+
+          if (endIdx !== -1) {
+            // We found a loop block
+            const innerLoop = cmds.slice(i + 1, endIdx);
+            const unrolledInner = unrollCommands(innerLoop); // recursively unroll
+            for (let iter = 0; iter < cmd.iterations; iter++) {
+              flat.push(...unrolledInner);
+            }
+            i = endIdx + 1; // Skip past the END_LOOP
+          } else {
+            // Malformed loop (no end), just treat contents normally
+            i++;
+          }
+        } else if (cmd.type !== 'END_LOOP') {
+          // Normal command
+          flat.push(cmd.type);
+          i++;
+        } else {
+          // Stray END_LOOP, ignore
+          i++;
+        }
+      }
+      return flat;
+    };
+
+    const flatActions = unrollCommands(commands);
+
+    if (flatActions.length === 0) {
+      setGameState('LOST');
+      setModalMessage("Your sequence didn't result in any actions!");
+      return;
+    }
+
     // Need refs to hold current state during the timeout closures
     let currentX = currentLevel.startPos.x;
     let currentY = currentLevel.startPos.y;
     let currentDir = currentLevel.startPos.facing;
 
     const executeAction = (index) => {
-      if (index >= commands.length) {
-        // End of actions
+      if (index >= flatActions.length) {
+        // End of actions - evaluate win/loss now
+        setTimeout(() => {
+          if (currentX === currentLevel.goalPos.x && currentY === currentLevel.goalPos.y) {
+            setGameState('WON');
+            setModalMessage("Great job! You wrote the correct sequence.");
+          } else {
+            setGameState('LOST');
+            setModalMessage("You ran out of commands before reaching the goal.");
+          }
+        }, 500);
         return;
       }
 
-      const action = commands[index];
+      const action = flatActions[index];
 
       if (action === 'TURN_LEFT') {
         const dirs = ['NORTH', 'WEST', 'SOUTH', 'EAST'];
@@ -72,7 +135,7 @@ function App() {
           setPlayerPos({ x: nextX, y: nextY }); // Let them see the fall
           setGameState('LOST');
           setModalMessage("Oh no! You went out of bounds.");
-          return; // Stop executing
+          return; // Stop executing immediately
         }
 
         // Collision Check: Walls
@@ -80,29 +143,12 @@ function App() {
         if (hitWall) {
           setGameState('LOST');
           setModalMessage("Ouch! You hit a wall.");
-          return; // Stop executing
+          return; // Stop executing immediately
         }
 
         currentX = nextX;
         currentY = nextY;
         setPlayerPos({ x: currentX, y: currentY });
-      }
-
-      // Check Win Condition
-      if (currentX === currentLevel.goalPos.x && currentY === currentLevel.goalPos.y) {
-        setGameState('WON');
-        setModalMessage("Great job! You wrote the correct code.");
-        return; // Stop executing
-      }
-
-      // If we finished all commands and haven't won/lost yet
-      if (index === commands.length - 1 && !(currentX === currentLevel.goalPos.x && currentY === currentLevel.goalPos.y)) {
-        setTimeout(() => {
-          if (gameState !== 'LOST' && gameState !== 'WON') { // Prevent double-triggering
-            setGameState('LOST');
-            setModalMessage("You ran out of commands before reaching the goal.");
-          }
-        }, 500);
       }
 
       setTimeout(() => executeAction(index + 1), 500);
