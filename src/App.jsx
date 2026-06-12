@@ -13,6 +13,7 @@ function App() {
   const [commands, setCommands] = useState([]);
   const [gameState, setGameState] = useState('IDLE'); // IDLE, RUNNING, WON, LOST
   const [modalMessage, setModalMessage] = useState('');
+  const [isTransmitting, setIsTransmitting] = useState(false);
 
   // Auth & Timer State
   const [user, setUser] = useState(null);
@@ -70,6 +71,7 @@ function App() {
     setCommands([]);
     setGameState('IDLE');
     setModalMessage('');
+    setIsTransmitting(false);
   }, [currentLevelIndex, currentLevel]);
 
   const handleRunCode = () => {
@@ -79,6 +81,7 @@ function App() {
     setPlayerPos({ x: currentLevel.startPos.x, y: currentLevel.startPos.y });
     setPlayerFacing(currentLevel.startPos.facing);
     setGameState('RUNNING');
+    setIsTransmitting(false);
 
     if (commands.length === 0) {
       setGameState('LOST');
@@ -150,15 +153,30 @@ function App() {
         // End of actions - evaluate win/loss now
         setTimeout(() => {
           if (currentX === currentLevel.goalPos.x && currentY === currentLevel.goalPos.y) {
-            if (currentLevelIndex === levels.length - 1) {
-              triggerGameOver(20);
-            } else {
-              setGameState('WON');
-              setModalMessage("Great job! You wrote the correct sequence.");
+            if (currentLevel.goalType === 'STAR') {
+              if (currentLevelIndex === levels.length - 1) {
+                triggerGameOver(20);
+              } else {
+                setGameState('WON');
+                setModalMessage("Great job! You reached the star.");
+              }
+            } else if (currentLevel.goalType === 'SATELLITE') {
+              // Check if the last action was transmit
+              if (flatActions[flatActions.length - 1] === 'TRANSMIT') {
+                if (currentLevelIndex === levels.length - 1) {
+                  triggerGameOver(20);
+                } else {
+                  setGameState('WON');
+                  setModalMessage("Great job! You transmitted data to the satellite.");
+                }
+              } else {
+                setGameState('LOST');
+                setModalMessage("You reached the satellite but forgot to Transmit!");
+              }
             }
           } else {
             setGameState('LOST');
-            setModalMessage("You ran out of commands before reaching the goal.");
+            setModalMessage("You ran out of commands before completing the objective.");
           }
         }, 500);
         return;
@@ -202,6 +220,9 @@ function App() {
         currentX = nextX;
         currentY = nextY;
         setPlayerPos({ x: currentX, y: currentY });
+      } else if (action === 'TRANSMIT') {
+        setIsTransmitting(true);
+        setTimeout(() => setIsTransmitting(false), 400); // Briefly flash
       }
 
       setTimeout(() => executeAction(index + 1), 500);
@@ -308,6 +329,7 @@ function App() {
           level={currentLevel}
           playerPos={playerPos}
           playerFacing={playerFacing}
+          isTransmitting={isTransmitting}
         />
 
         {/* Modal Overlay */}

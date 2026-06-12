@@ -31,7 +31,8 @@ const CommandBlocks = ({ levelInstructions, levelNumber, maxCommands, commands, 
     'TURN_LEFT': '⬅️',
     'TURN_RIGHT': '➡️',
     'START_LOOP': '🔁',
-    'END_LOOP': '🔚'
+    'END_LOOP': '🔚',
+    'TRANSMIT': '⚡'
   };
 
   return (
@@ -124,6 +125,14 @@ const CommandBlocks = ({ levelInstructions, levelNumber, maxCommands, commands, 
             >
               <span className="text-2xl mb-1">🔚</span>
               <span className="text-[10px] font-bold">End Loop</span>
+            </button>
+            <button
+              onClick={() => handleAddCommand({ type: 'TRANSMIT' })}
+              disabled={gameState === 'RUNNING' || commands.length >= maxCommands}
+              className="w-16 h-16 flex flex-col items-center justify-center bg-gray-700 rounded-lg hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              <span className="text-2xl mb-1">⚡</span>
+              <span className="text-[10px] font-bold">Transmit</span>
             </button>
           </div>
         </div>

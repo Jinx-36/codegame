@@ -1,18 +1,19 @@
 export const levels = [
   {
     "id": 1,
-    "instructions": "Move forward to the goal.",
-    "maxCommands": 4,
+    "instructions": "Move forward to reach the Star.",
+    "maxCommands": 3,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 1,
+      "x": 2,
+      "y": 3,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 3,
-      "y": 1
+      "x": 4,
+      "y": 3
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -51,6 +52,18 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
         "x": 4,
         "y": 1
       },
@@ -104,18 +117,6 @@ export const levels = [
       },
       {
         "x": 1,
-        "y": 3
-      },
-      {
-        "x": 2,
-        "y": 3
-      },
-      {
-        "x": 3,
-        "y": 3
-      },
-      {
-        "x": 4,
         "y": 3
       },
       {
@@ -266,14 +267,15 @@ export const levels = [
     "maxCommands": 5,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 1,
+      "x": 2,
+      "y": 3,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 4,
-      "y": 1
+      "x": 6,
+      "y": 3
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -312,6 +314,22 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
         "x": 5,
         "y": 1
       },
@@ -361,26 +379,6 @@ export const levels = [
       },
       {
         "x": 1,
-        "y": 3
-      },
-      {
-        "x": 2,
-        "y": 3
-      },
-      {
-        "x": 3,
-        "y": 3
-      },
-      {
-        "x": 4,
-        "y": 3
-      },
-      {
-        "x": 5,
-        "y": 3
-      },
-      {
-        "x": 6,
         "y": 3
       },
       {
@@ -519,18 +517,19 @@ export const levels = [
   },
   {
     "id": 3,
-    "instructions": "Time to turn.",
-    "maxCommands": 7,
+    "instructions": "Don't go too far! 3 steps is enough.",
+    "maxCommands": 4,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 1,
+      "x": 2,
+      "y": 3,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 3,
+      "x": 5,
       "y": 3
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -569,6 +568,18 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
         "x": 4,
         "y": 1
       },
@@ -597,6 +608,10 @@ export const levels = [
         "y": 2
       },
       {
+        "x": 3,
+        "y": 2
+      },
+      {
         "x": 4,
         "y": 2
       },
@@ -618,18 +633,6 @@ export const levels = [
       },
       {
         "x": 1,
-        "y": 3
-      },
-      {
-        "x": 2,
-        "y": 3
-      },
-      {
-        "x": 4,
-        "y": 3
-      },
-      {
-        "x": 5,
         "y": 3
       },
       {
@@ -772,18 +775,19 @@ export const levels = [
   },
   {
     "id": 4,
-    "instructions": "Navigate the corner.",
-    "maxCommands": 9,
+    "instructions": "Now try a left turn!",
+    "maxCommands": 5,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 1,
+      "x": 2,
+      "y": 3,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 4,
-      "y": 3
+      "x": 3,
+      "y": 1
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -822,7 +826,7 @@ export const levels = [
         "y": 1
       },
       {
-        "x": 3,
+        "x": 1,
         "y": 1
       },
       {
@@ -875,6 +879,14 @@ export const levels = [
       },
       {
         "x": 1,
+        "y": 3
+      },
+      {
+        "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
         "y": 3
       },
       {
@@ -1021,18 +1033,19 @@ export const levels = [
   },
   {
     "id": 5,
-    "instructions": "A quick zig-zag.",
-    "maxCommands": 12,
+    "instructions": "What about a right turn?",
+    "maxCommands": 5,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
+      "x": 2,
       "y": 1,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 5,
+      "x": 3,
       "y": 3
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -1071,6 +1084,10 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
         "x": 3,
         "y": 1
       },
@@ -1099,6 +1116,10 @@ export const levels = [
         "y": 2
       },
       {
+        "x": 3,
+        "y": 2
+      },
+      {
         "x": 4,
         "y": 2
       },
@@ -1123,7 +1144,11 @@ export const levels = [
         "y": 3
       },
       {
-        "x": 2,
+        "x": 4,
+        "y": 3
+      },
+      {
+        "x": 5,
         "y": 3
       },
       {
@@ -1266,18 +1291,19 @@ export const levels = [
   },
   {
     "id": 6,
-    "instructions": "Avoid the wall.",
-    "maxCommands": 10,
+    "instructions": "Make a U-turn!",
+    "maxCommands": 8,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
+      "x": 2,
       "y": 1,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 5,
-      "y": 1
+      "x": 2,
+      "y": 3
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -1316,7 +1342,11 @@ export const levels = [
         "y": 1
       },
       {
-        "x": 3,
+        "x": 1,
+        "y": 1
+      },
+      {
+        "x": 5,
         "y": 1
       },
       {
@@ -1333,6 +1363,14 @@ export const levels = [
       },
       {
         "x": 1,
+        "y": 2
+      },
+      {
+        "x": 2,
+        "y": 2
+      },
+      {
+        "x": 3,
         "y": 2
       },
       {
@@ -1353,18 +1391,6 @@ export const levels = [
       },
       {
         "x": 1,
-        "y": 3
-      },
-      {
-        "x": 2,
-        "y": 3
-      },
-      {
-        "x": 3,
-        "y": 3
-      },
-      {
-        "x": 4,
         "y": 3
       },
       {
@@ -1511,11 +1537,11 @@ export const levels = [
   },
   {
     "id": 7,
-    "instructions": "Go around the pillar.",
-    "maxCommands": 12,
+    "instructions": "Turn both left and right!",
+    "maxCommands": 7,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
+      "x": 2,
       "y": 1,
       "facing": "EAST"
     },
@@ -1523,6 +1549,7 @@ export const levels = [
       "x": 5,
       "y": 3
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -1558,6 +1585,10 @@ export const levels = [
       },
       {
         "x": 0,
+        "y": 1
+      },
+      {
+        "x": 1,
         "y": 1
       },
       {
@@ -1756,18 +1787,19 @@ export const levels = [
   },
   {
     "id": 8,
-    "instructions": "The U-Turn.",
-    "maxCommands": 14,
+    "instructions": "Find the shortest way!",
+    "maxCommands": 6,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
+      "x": 2,
       "y": 1,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 1,
+      "x": 4,
       "y": 3
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -1806,6 +1838,10 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
         "x": 5,
         "y": 1
       },
@@ -1826,14 +1862,6 @@ export const levels = [
         "y": 2
       },
       {
-        "x": 2,
-        "y": 2
-      },
-      {
-        "x": 3,
-        "y": 2
-      },
-      {
         "x": 5,
         "y": 2
       },
@@ -1847,6 +1875,10 @@ export const levels = [
       },
       {
         "x": 0,
+        "y": 3
+      },
+      {
+        "x": 1,
         "y": 3
       },
       {
@@ -1993,18 +2025,19 @@ export const levels = [
   },
   {
     "id": 9,
-    "instructions": "Sneak past the blocks.",
-    "maxCommands": 16,
+    "instructions": "Watch out for the void!",
+    "maxCommands": 10,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
+      "x": 2,
       "y": 1,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 6,
+      "x": 5,
       "y": 1
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -2043,7 +2076,15 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
         "x": 3,
+        "y": 1
+      },
+      {
+        "x": 6,
         "y": 1
       },
       {
@@ -2056,6 +2097,10 @@ export const levels = [
       },
       {
         "x": 1,
+        "y": 2
+      },
+      {
+        "x": 2,
         "y": 2
       },
       {
@@ -2234,18 +2279,19 @@ export const levels = [
   },
   {
     "id": 10,
-    "instructions": "The long way around.",
-    "maxCommands": 20,
+    "instructions": "Use the Transmit command to connect to the Satellite!",
+    "maxCommands": 5,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 1,
+      "x": 2,
+      "y": 2,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 1,
-      "y": 3
+      "x": 6,
+      "y": 2
     },
+    "goalType": "SATELLITE",
     "walls": [
       {
         "x": 0,
@@ -2284,6 +2330,26 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
+        "x": 5,
+        "y": 1
+      },
+      {
         "x": 6,
         "y": 1
       },
@@ -2300,27 +2366,31 @@ export const levels = [
         "y": 2
       },
       {
-        "x": 2,
-        "y": 2
-      },
-      {
-        "x": 3,
-        "y": 2
-      },
-      {
-        "x": 4,
-        "y": 2
-      },
-      {
-        "x": 6,
-        "y": 2
-      },
-      {
         "x": 7,
         "y": 2
       },
       {
         "x": 0,
+        "y": 3
+      },
+      {
+        "x": 1,
+        "y": 3
+      },
+      {
+        "x": 2,
+        "y": 3
+      },
+      {
+        "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
+        "y": 3
+      },
+      {
+        "x": 5,
         "y": 3
       },
       {
@@ -2463,18 +2533,19 @@ export const levels = [
   },
   {
     "id": 11,
-    "instructions": "Use a loop to walk the long hallway.",
-    "maxCommands": 5,
+    "instructions": "Transmit from afar.",
+    "maxCommands": 7,
     "gridSize": 8,
     "startPos": {
       "x": 1,
-      "y": 1,
+      "y": 2,
       "facing": "EAST"
     },
     "goalPos": {
       "x": 7,
-      "y": 1
+      "y": 2
     },
+    "goalType": "SATELLITE",
     "walls": [
       {
         "x": 0,
@@ -2513,35 +2584,35 @@ export const levels = [
         "y": 1
       },
       {
-        "x": 0,
-        "y": 2
-      },
-      {
         "x": 1,
-        "y": 2
+        "y": 1
       },
       {
         "x": 2,
-        "y": 2
+        "y": 1
       },
       {
         "x": 3,
-        "y": 2
+        "y": 1
       },
       {
         "x": 4,
-        "y": 2
+        "y": 1
       },
       {
         "x": 5,
-        "y": 2
+        "y": 1
       },
       {
         "x": 6,
-        "y": 2
+        "y": 1
       },
       {
         "x": 7,
+        "y": 1
+      },
+      {
+        "x": 0,
         "y": 2
       },
       {
@@ -2708,24 +2779,41 @@ export const levels = [
   },
   {
     "id": 12,
-    "instructions": "Loop to the edge.",
-    "maxCommands": 9,
+    "instructions": "Approach the Satellite.",
+    "maxCommands": 5,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 0,
+      "x": 2,
+      "y": 2,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 4,
-      "y": 3
+      "x": 3,
+      "y": 1
     },
+    "goalType": "SATELLITE",
     "walls": [
       {
         "x": 0,
         "y": 0
       },
       {
+        "x": 1,
+        "y": 0
+      },
+      {
+        "x": 2,
+        "y": 0
+      },
+      {
+        "x": 3,
+        "y": 0
+      },
+      {
+        "x": 4,
+        "y": 0
+      },
+      {
         "x": 5,
         "y": 0
       },
@@ -2750,7 +2838,7 @@ export const levels = [
         "y": 1
       },
       {
-        "x": 3,
+        "x": 4,
         "y": 1
       },
       {
@@ -2774,11 +2862,7 @@ export const levels = [
         "y": 2
       },
       {
-        "x": 2,
-        "y": 2
-      },
-      {
-        "x": 3,
+        "x": 4,
         "y": 2
       },
       {
@@ -2807,6 +2891,10 @@ export const levels = [
       },
       {
         "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
         "y": 3
       },
       {
@@ -2953,18 +3041,19 @@ export const levels = [
   },
   {
     "id": 13,
-    "instructions": "Stairs! Use a loop to repeat the pattern.",
-    "maxCommands": 8,
+    "instructions": "Shortest way to the Satellite!",
+    "maxCommands": 7,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
+      "x": 2,
       "y": 1,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 5,
-      "y": 4
+      "x": 4,
+      "y": 2
     },
+    "goalType": "SATELLITE",
     "walls": [
       {
         "x": 0,
@@ -3003,6 +3092,10 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
         "x": 3,
         "y": 1
       },
@@ -3031,10 +3124,6 @@ export const levels = [
         "y": 2
       },
       {
-        "x": 4,
-        "y": 2
-      },
-      {
         "x": 5,
         "y": 2
       },
@@ -3056,6 +3145,14 @@ export const levels = [
       },
       {
         "x": 2,
+        "y": 3
+      },
+      {
+        "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
         "y": 3
       },
       {
@@ -3084,6 +3181,14 @@ export const levels = [
       },
       {
         "x": 3,
+        "y": 4
+      },
+      {
+        "x": 4,
+        "y": 4
+      },
+      {
+        "x": 5,
         "y": 4
       },
       {
@@ -3194,24 +3299,33 @@ export const levels = [
   },
   {
     "id": 14,
-    "instructions": "A bigger staircase.",
-    "maxCommands": 8,
+    "instructions": "Zickety Zack!",
+    "maxCommands": 10,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 0,
+      "x": 2,
+      "y": 1,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 6,
-      "y": 4
+      "x": 5,
+      "y": 3
     },
+    "goalType": "SATELLITE",
     "walls": [
       {
         "x": 0,
         "y": 0
       },
       {
+        "x": 1,
+        "y": 0
+      },
+      {
+        "x": 2,
+        "y": 0
+      },
+      {
         "x": 3,
         "y": 0
       },
@@ -3321,6 +3435,14 @@ export const levels = [
       },
       {
         "x": 4,
+        "y": 4
+      },
+      {
+        "x": 5,
+        "y": 4
+      },
+      {
+        "x": 6,
         "y": 4
       },
       {
@@ -3427,18 +3549,19 @@ export const levels = [
   },
   {
     "id": 15,
-    "instructions": "The spiral loop.",
-    "maxCommands": 12,
+    "instructions": "Zackety Zick!",
+    "maxCommands": 10,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 1,
+      "x": 2,
+      "y": 3,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 2,
-      "y": 3
+      "x": 5,
+      "y": 1
     },
+    "goalType": "SATELLITE",
     "walls": [
       {
         "x": 0,
@@ -3477,7 +3600,15 @@ export const levels = [
         "y": 1
       },
       {
-        "x": 5,
+        "x": 1,
+        "y": 1
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
         "y": 1
       },
       {
@@ -3501,10 +3632,6 @@ export const levels = [
         "y": 2
       },
       {
-        "x": 3,
-        "y": 2
-      },
-      {
         "x": 5,
         "y": 2
       },
@@ -3522,6 +3649,10 @@ export const levels = [
       },
       {
         "x": 1,
+        "y": 3
+      },
+      {
+        "x": 4,
         "y": 3
       },
       {
@@ -3668,18 +3799,19 @@ export const levels = [
   },
   {
     "id": 16,
-    "instructions": "Loop around the center.",
-    "maxCommands": 14,
+    "instructions": "5 steps to the star, but only 4 slots! Use a loop.",
+    "maxCommands": 4,
     "gridSize": 8,
     "startPos": {
       "x": 1,
-      "y": 1,
+      "y": 2,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 2,
-      "y": 4
+      "x": 7,
+      "y": 2
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -3718,6 +3850,22 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
         "x": 5,
         "y": 1
       },
@@ -3734,30 +3882,6 @@ export const levels = [
         "y": 2
       },
       {
-        "x": 1,
-        "y": 2
-      },
-      {
-        "x": 2,
-        "y": 2
-      },
-      {
-        "x": 3,
-        "y": 2
-      },
-      {
-        "x": 5,
-        "y": 2
-      },
-      {
-        "x": 6,
-        "y": 2
-      },
-      {
-        "x": 7,
-        "y": 2
-      },
-      {
         "x": 0,
         "y": 3
       },
@@ -3771,6 +3895,10 @@ export const levels = [
       },
       {
         "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
         "y": 3
       },
       {
@@ -3791,6 +3919,18 @@ export const levels = [
       },
       {
         "x": 1,
+        "y": 4
+      },
+      {
+        "x": 2,
+        "y": 4
+      },
+      {
+        "x": 3,
+        "y": 4
+      },
+      {
+        "x": 4,
         "y": 4
       },
       {
@@ -3905,24 +4045,37 @@ export const levels = [
   },
   {
     "id": 17,
-    "instructions": "Double loop pattern.",
-    "maxCommands": 14,
+    "instructions": "Put the repeating pattern in the loop.",
+    "maxCommands": 6,
     "gridSize": 8,
     "startPos": {
-      "x": 1,
-      "y": 0,
+      "x": 2,
+      "y": 1,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 6,
-      "y": 3
+      "x": 5,
+      "y": 4
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
         "y": 0
       },
       {
+        "x": 1,
+        "y": 0
+      },
+      {
+        "x": 2,
+        "y": 0
+      },
+      {
+        "x": 3,
+        "y": 0
+      },
+      {
         "x": 4,
         "y": 0
       },
@@ -3947,7 +4100,11 @@ export const levels = [
         "y": 1
       },
       {
-        "x": 2,
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 4,
         "y": 1
       },
       {
@@ -3971,11 +4128,11 @@ export const levels = [
         "y": 2
       },
       {
-        "x": 2,
+        "x": 4,
         "y": 2
       },
       {
-        "x": 3,
+        "x": 5,
         "y": 2
       },
       {
@@ -3999,11 +4156,11 @@ export const levels = [
         "y": 3
       },
       {
-        "x": 3,
+        "x": 5,
         "y": 3
       },
       {
-        "x": 4,
+        "x": 6,
         "y": 3
       },
       {
@@ -4024,14 +4181,6 @@ export const levels = [
       },
       {
         "x": 3,
-        "y": 4
-      },
-      {
-        "x": 4,
-        "y": 4
-      },
-      {
-        "x": 5,
         "y": 4
       },
       {
@@ -4142,24 +4291,33 @@ export const levels = [
   },
   {
     "id": 18,
-    "instructions": "The Snake.",
-    "maxCommands": 16,
+    "instructions": "A longer pattern.",
+    "maxCommands": 6,
     "gridSize": 8,
     "startPos": {
       "x": 1,
-      "y": 0,
+      "y": 1,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 7,
+      "x": 5,
       "y": 4
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
         "y": 0
       },
       {
+        "x": 1,
+        "y": 0
+      },
+      {
+        "x": 2,
+        "y": 0
+      },
+      {
         "x": 3,
         "y": 0
       },
@@ -4184,7 +4342,11 @@ export const levels = [
         "y": 1
       },
       {
-        "x": 1,
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
         "y": 1
       },
       {
@@ -4208,11 +4370,11 @@ export const levels = [
         "y": 2
       },
       {
-        "x": 1,
+        "x": 3,
         "y": 2
       },
       {
-        "x": 2,
+        "x": 4,
         "y": 2
       },
       {
@@ -4236,11 +4398,11 @@ export const levels = [
         "y": 3
       },
       {
-        "x": 2,
+        "x": 4,
         "y": 3
       },
       {
-        "x": 3,
+        "x": 5,
         "y": 3
       },
       {
@@ -4264,11 +4426,11 @@ export const levels = [
         "y": 4
       },
       {
-        "x": 3,
+        "x": 6,
         "y": 4
       },
       {
-        "x": 4,
+        "x": 7,
         "y": 4
       },
       {
@@ -4371,8 +4533,8 @@ export const levels = [
   },
   {
     "id": 19,
-    "instructions": "Complex path. Be efficient!",
-    "maxCommands": 16,
+    "instructions": "Keep looping!",
+    "maxCommands": 6,
     "gridSize": 8,
     "startPos": {
       "x": 1,
@@ -4380,9 +4542,10 @@ export const levels = [
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 3,
+      "x": 6,
       "y": 4
     },
+    "goalType": "STAR",
     "walls": [
       {
         "x": 0,
@@ -4449,6 +4612,10 @@ export const levels = [
         "y": 2
       },
       {
+        "x": 5,
+        "y": 2
+      },
+      {
         "x": 6,
         "y": 2
       },
@@ -4473,10 +4640,6 @@ export const levels = [
         "y": 3
       },
       {
-        "x": 4,
-        "y": 3
-      },
-      {
         "x": 6,
         "y": 3
       },
@@ -4497,7 +4660,11 @@ export const levels = [
         "y": 4
       },
       {
-        "x": 6,
+        "x": 3,
+        "y": 4
+      },
+      {
+        "x": 4,
         "y": 4
       },
       {
@@ -4604,18 +4771,19 @@ export const levels = [
   },
   {
     "id": 20,
-    "instructions": "The Final Challenge.",
-    "maxCommands": 20,
+    "instructions": "Loop to reach it, then Transmit!",
+    "maxCommands": 4,
     "gridSize": 8,
     "startPos": {
       "x": 1,
-      "y": 1,
+      "y": 2,
       "facing": "EAST"
     },
     "goalPos": {
-      "x": 2,
-      "y": 5
+      "x": 7,
+      "y": 2
     },
+    "goalType": "SATELLITE",
     "walls": [
       {
         "x": 0,
@@ -4654,6 +4822,26 @@ export const levels = [
         "y": 1
       },
       {
+        "x": 1,
+        "y": 1
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
+        "x": 5,
+        "y": 1
+      },
+      {
         "x": 6,
         "y": 1
       },
@@ -4663,30 +4851,6 @@ export const levels = [
       },
       {
         "x": 0,
-        "y": 2
-      },
-      {
-        "x": 1,
-        "y": 2
-      },
-      {
-        "x": 2,
-        "y": 2
-      },
-      {
-        "x": 3,
-        "y": 2
-      },
-      {
-        "x": 4,
-        "y": 2
-      },
-      {
-        "x": 6,
-        "y": 2
-      },
-      {
-        "x": 7,
         "y": 2
       },
       {
@@ -4695,6 +4859,22 @@ export const levels = [
       },
       {
         "x": 1,
+        "y": 3
+      },
+      {
+        "x": 2,
+        "y": 3
+      },
+      {
+        "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
+        "y": 3
+      },
+      {
+        "x": 5,
         "y": 3
       },
       {
@@ -4711,6 +4891,10 @@ export const levels = [
       },
       {
         "x": 1,
+        "y": 4
+      },
+      {
+        "x": 2,
         "y": 4
       },
       {
@@ -4739,6 +4923,10 @@ export const levels = [
       },
       {
         "x": 1,
+        "y": 5
+      },
+      {
+        "x": 2,
         "y": 5
       },
       {

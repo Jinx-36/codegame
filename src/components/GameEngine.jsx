@@ -1,7 +1,7 @@
 import React from 'react';
 
-const GameEngine = ({ level, playerPos, playerFacing }) => {
-  const { gridSize, goalPos, walls } = level;
+const GameEngine = ({ level, playerPos, playerFacing, isTransmitting }) => {
+  const { gridSize, goalPos, goalType, walls } = level;
 
   // Render the grid cells
   const cells = [];
@@ -16,15 +16,17 @@ const GameEngine = ({ level, playerPos, playerFacing }) => {
           key={`${x}-${y}`}
           className={`w-full h-full border border-gray-200 flex items-center justify-center
             ${isWall ? 'bg-game-dark-blue' : 'bg-game-white'}
-            ${isGoal && !isPlayer ? 'bg-green-200' : ''}
+            ${isGoal && !isPlayer ? 'bg-green-100' : ''}
           `}
         >
           {isGoal && !isPlayer && !isWall && (
-            <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+            <div className="text-3xl animate-pulse">
+              {goalType === 'STAR' ? '⭐' : '🛰️'}
+            </div>
           )}
           {isPlayer && (
             <div
-              className="text-4xl transition-transform duration-300 ease-in-out flex items-center justify-center"
+              className={`text-4xl transition-all duration-300 ease-in-out flex items-center justify-center ${isTransmitting ? 'scale-150 drop-shadow-[0_0_15px_rgba(255,255,0,1)]' : ''}`}
               style={{
                 transform: `rotate(${
                   playerFacing === 'NORTH' ? -45 :
